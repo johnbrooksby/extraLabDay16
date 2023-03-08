@@ -1,5 +1,5 @@
 * {
-    background-color: rgb(85, 1, 85);
+   
     color: lightgrey;
     margin: 0px;
 }
@@ -12,8 +12,17 @@ header {
     width: 100vw;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    font-family: 'Imperial Script', cursive;
+    font-family: 'Luxurious Script', cursive;
+    /* background-color: rgb(85, 1, 85); */
+    background-color: #313B72;
+}
+
+main {
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: rgb(85, 1, 85); */
+    background-color: #313B72;
+    padding: 10px;
 }
 
 h1 {
@@ -25,47 +34,79 @@ h4 {
     font-size: 30pt;
 }
 
-input {
+.order {
     background-color: white;
     width: 12vw;
 }
 
-form {
-    width: 100vw;
+.form-layout {
+    width: 30vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: 16pt;
-    height: 80vh;
+    height: 500px;
+    border: 2px dashed grey;
+    border-radius: 15px;
+    /* background-color: rgb(133, 0, 133); */
+    /* background-color: #313B72; */
+    background-color: rgb(85, 1, 85);
 }
 
-.formLayout {
-
+input {
+    margin-right: 20px;
 }
 
 .radioBtns {
-    display: flex;
+    display: inline;
     width: 300px;
     height: 50px;
-    justify-content: start;
-    flex-direction: column;
-    align-items: start;
+    justify-content: flex-start;
+    /* flex-direction: column; */
+    align-items: center;
+    margin: 0px;
 }
 
-.herebtn .toGoBtn {
-    width: 100px;
-    height: 20px;
+.hereBtn, .toGoBtn {
+    margin: 0px;
+    width: 300px;
+    height: 25px;
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
+}
+
+.hereBtnDiv, .toGoBtnDiv {
+    display: flex;
+    width: 125px;
+    height: 25px;
+    justify-content: flex-start;
+    margin: auto;
 }
 
 button {
-    background-color: aquamarine;
+    background-color: #5cc281;
     color: black;
     padding: 10px;
     font-size: 14pt;
-    border-radius: 5px;
-    margin-bottom: 40px;
+    border-radius: 15px;
+    /* margin-bottom: 40px; */
+}
+
+ol {
+    width: 60vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    padding: 0px;
+}
+
+.list-header {
+    font-family: 'Luxurious Script', cursive;
+    font-size: 26pt;
+    width: 60vw;
+    padding: 8px;
 }

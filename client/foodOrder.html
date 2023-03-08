@@ -8,24 +8,24 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Welcome to the Fancyplace Restaurant</h1>
-        <h4>What Would You Like to Eat?</h4>
+        <h4>What  Would  You  Like?</h4>
     </header>
     <main>
-        <form class="formLayout">
+        <form class="form-layout">
             <label for="name" required>Please enter your name</label>
-            <input id="name" placeholder="First Name"/>
+            <input class="order" id="name" placeholder="First Name"/>
             <label for="meal">What meal would you like?</label>
-            <input id="meal" placeholder="Meal"/>
+            <input class="order" id="meal" placeholder="Meal"/>
             <label for="side">What side would you like?</label>
-            <input id="side" placeholder="Side"/>
+            <input class="order" id="side" placeholder="Side"/>
             <label for="drink">What would you like to drink?</label>
             <select id="drink" name="drink">
-                <option value="">--Please choose an option--</option>
+                <option value="">--Please choose a drink option--</option>
                 <option value="pepsi">Pepsi</option>
                 <option value="mtnDew">Mtn Dew</option>
                 <option value="rootBeer">Root Beer</option>
@@ -34,13 +34,17 @@
                 <option value="water">Water</option>
             </select>
             <div class="radioBtns">
-                <div class="herebtn">
-                    <input type="radio" id="here" name="hereOrToGo"/>
-                    <label for="here">For Here</label>
+                <div class="hereBtnDiv">
+                    <label class="hereBtn">
+                        <input type="radio" id="here" name="hereOrToGo" value="for-here"/>
+                        <span>For Here</span>
+                    </label>
                 </div>
-                <div class="toGoBtn">
-                    <input type="radio" id="toGo" name="hereOrToGo"/>
-                    <label for="toGo">To Go</label>
+                <div class="toGoBtnDiv">
+                    <label class="toGoBtn">
+                        <input type="radio" id="toGo" name="hereOrToGo" value="to-go"/>
+                        <span>To Go</span>
+                    </label>
                 </div>
             </div>
             <label for="pUTime">What time would you like to pick up your food?</label>
@@ -56,6 +60,10 @@
             </select>
             <button>Place Order</button>
         </form>
+        <ol>
+            <lh class="list-header">Next Order Ready:</lh>
+
+        </ol>
 
     </main>
 
