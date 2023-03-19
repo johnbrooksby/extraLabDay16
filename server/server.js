@@ -1,13 +1,22 @@
+require('dotenv').config()
 const express = require('express')
-const cors = require('cors')
-
 const app = express()
+const cors = require('cors')
+const {PORT} = process.env
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
+const {getOrders, deleteOrder, addOrder} = require("./controller/ctrl");
 
+// app.post("/orders", () => console.log("We're here now"));
+app.post("/orders", addOrder);
 
-app.listen(4000, () => {
-    console.log("app listening on 4000")
-})
+app.get("/orders", getOrders);
+
+app.delete("/orders:id", deleteOrder);
+
+// let PORT = 4321
+app.listen(PORT, () => {
+    console.log(`app listening on ${PORT}`)
+});

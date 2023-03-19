@@ -11,59 +11,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>Welcome to the Fancyplace Restaurant</h1>
-        <h4>What  Would  You  Like?</h4>
+        <h3>What  Would  You  Like?</h3>
+        <img id="image"/>
     </header>
     <main>
         <form class="form-layout">
             <label for="name" required>Please enter your name</label>
-            <input class="order" id="name" placeholder="First Name"/>
+            <input class="order" id="name" placeholder="Name"/>
             <label for="meal">What meal would you like?</label>
-            <input class="order" id="meal" placeholder="Meal"/>
+            <input class="order" id="main_dish" placeholder="Meal"/>
             <label for="side">What side would you like?</label>
-            <input class="order" id="side" placeholder="Side"/>
+            <input class="order" id="side_dish" placeholder="Side"/>
             <label for="drink">What would you like to drink?</label>
-            <select id="drink" name="drink">
-                <option value="">--Please choose a drink option--</option>
-                <option value="pepsi">Pepsi</option>
-                <option value="mtnDew">Mtn Dew</option>
-                <option value="rootBeer">Root Beer</option>
-                <option value="gingerAle">Ginger Ale</option>
-                <option value="lemonade">Lemonade</option>
-                <option value="water">Water</option>
+            <select class="drop-down" id="drink_id" name="drink">
+                <option class="drop-down" value="">--Please choose a drink option--</option>
+                <option class="drop-down" value=1>Cola</option>
+                <option class="drop-down" value=2>Yellow Drink</option>
+                <option class="drop-down" value=3>Root Beer</option>
+                <option class="drop-down" value=4>Ginger Ale</option>
+                <option class="drop-down" value=5>Lemonade</option>
+                <option class="drop-down" value=6>Water</option>
             </select>
             <div class="radioBtns">
                 <div class="hereBtnDiv">
                     <label class="hereBtn">
-                        <input type="radio" id="here" name="hereOrToGo" value="for-here"/>
-                        <span>For Here</span>
+                        <input type="radio" id="here" name="is_togo" value=FALSE>
+                        <span class="togo">For Here</span>
                     </label>
                 </div>
                 <div class="toGoBtnDiv">
                     <label class="toGoBtn">
-                        <input type="radio" id="toGo" name="hereOrToGo" value="to-go"/>
-                        <span>To Go</span>
+                        <input type="radio" id="toGo" name="is_togo" value=TRUE>
+                        <span class="togo">To Go</span>
                     </label>
                 </div>
             </div>
-            <label for="pUTime">What time would you like to pick up your food?</label>
-            <select id="pUTime" name="time">
-                <option value="">--Please choose a pickup time--</option>
-                <option value="4pm">4:00 pm</option>
-                <option value="4:30pm">4:30 pm</option>
-                <option value="5pm">5:00 pm</option>
-                <option value="5:30pm">5:30 pm</option>
-                <option value="6pm">6:00 pm</option>
-                <option value="6:30pm">6:30 pm</option>
-                <option value="7pm">7:00 pm</option>
+            <label for="pickup_id">What time would you like to pick up your food?</label>
+            <select class="drop-down" id="pickup_id" name="time">
+                <option class="drop-down" value="">--Please choose a pickup time--</option>
+                <option class="drop-down" value=1>4:00 pm</option>
+                <option class="drop-down" value=2>4:30 pm</option>
+                <option class="drop-down" value=3>5:00 pm</option>
+                <option class="drop-down" value=4>5:30 pm</option>
+                <option class="drop-down" value=5>6:00 pm</option>
+                <option class="drop-down" value=6>6:30 pm</option>
+                <option class="drop-down" value=7>7:00 pm</option>
             </select>
-            <button>Place Order</button>
+            <button id="button">Place Order</button>
         </form>
-        <ol>
-            <lh class="list-header">Next Order Ready:</lh>
+        <section>
+            <span class="list-header">Next Order Ready:</span>
+            <div id="queue">
 
-        </ol>
+            </div>
+        </section>
 
     </main>
 
