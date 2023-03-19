@@ -21,7 +21,6 @@ module.exports = {
         `).then (dbRes => {
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err));
-                 
     },
 
     deleteOrder: (req, res) => {
@@ -36,6 +35,16 @@ module.exports = {
     },
 
     getOrders: (req, res) => {
-        res.status(200).send(orders);
+
+        sequelize.query(`
+            SELECT orders.id AS order_number, customer_name, main_dish, side_dish, drink, is_togo, pick_up
+            FROM orders
+            JOIN drink
+            ON drink.id = drink_id
+            JOIN pickup
+            ON pickup.id = pickup_id
+        `).then (dbRes => {
+            res.status(200).send(dbRes[0])
+        }).catch(err => console.log(err));
     }
 };
