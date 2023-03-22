@@ -36,9 +36,10 @@
 --  ('Lemonade'),
 --  ('Water');
 
-select orders.id, customer_name, main_dish, side_dish, drink, is_togo, pick_up
-from orders
-join drink
-on drink.id = drink_id
-join pickup
-on pickup.id = pickup_id
+-- select orders.id, customer_name, main_dish, side_dish, drink, is_togo, pick_up
+-- from orders
+-- join drink
+-- on drink.id = drink_id
+-- join pickup
+-- on pickup.id = pickup_id
+-- ORDER BY pick_up;

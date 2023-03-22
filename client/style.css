@@ -137,16 +137,61 @@ section {
 
 .queueItem {
     width: (60vw - 20px);
-    height: 50px;
-    background-color: white;
-    margin: 5px;
+    height: 35px;
+    background-color: #b49a77;
+    margin: 7px;
     display: flex;
+    border: 2px, solid, #A98B67;
+    border-radius: 7px;
+    justify-content: space-between;
+    /* justify-content: space-between; */
 
 }
 
 .innerQueueItem {
+    width: auto;
+    height: 35px;
+    /* background-color: red; */
+    margin: 5px;
+}
+
+h2 {
+    color:cornsilk; 
+    font-size: 16pt;
+}
+
+.idBox {
     width: 50px;
     height: 35px;
-    background-color: red;
-    margin: 5px;
+}
+
+.nameBox {
+    width: 140px;
+    height: 35px;
+}
+
+.mealBox {
+    width: 195px;
+    height: 35px;
+}
+
+.sideBox {
+    width: 125px;
+    height: 35px;
+}
+
+.drinkBox {
+    width: 165px;
+    height: 35px;
+}
+
+.toGoBox {
+    width: 125px;
+    height: 35px;
+}
+
+.timeBox {
+    width: 125px;
+    height: 35px;
+    text-align: center;
 }

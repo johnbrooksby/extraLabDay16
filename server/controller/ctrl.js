@@ -13,11 +13,11 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
     addOrder: (req, res) => {
         
-        const {name, main_dish, side_dish, drink_id, is_togo, pickup_id} = req.body;
+        const {name, main_dish, side_dish, drink_id, togo, pickup_id} = req.body;
         
         sequelize.query(`
-            INSERT INTO orders(customer_name, main_dish, side_dish, drink_id, is_togo, pickup_id)
-            VALUES('${name}', '${main_dish}', '${side_dish}', ${drink_id}, ${is_togo}, ${pickup_id});
+            INSERT INTO orders(customer_name, main_dish, side_dish, drink_id, pickup_id, togo)
+            VALUES('${name}', '${main_dish}', '${side_dish}', ${drink_id}, ${pickup_id}, '${togo}');
         `).then (dbRes => {
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err));
@@ -38,7 +38,7 @@ module.exports = {
 
         // console.log(req.body)
         sequelize.query(`
-            SELECT orders.id AS order_number, customer_name, main_dish, side_dish, drink, is_togo, pick_up
+            SELECT orders.id AS order_number, customer_name, main_dish, side_dish, drink, pick_up, togo
             FROM orders
             JOIN drink
             ON drink.id = drink_id

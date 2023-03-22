@@ -11,16 +11,20 @@ function addOrder(event) {
     let personMeal = document.getElementById("main_dish");
     let personSide = document.getElementById("side_dish");
     let personDrink = document.getElementById("drink_id");
-    let personHere = document.querySelector("input[name='is_togo']:checked").value;
+    let personHere = document.querySelector("input[name='togo']:checked").value;
     let personTime = document.getElementById("pickup_id");
     let queue = document.getElementById("queue");
 
+    personName = formatTitle(personName.value)
+    personMeal = formatTitle(personMeal.value)
+    personSide = formatTitle(personSide.value)
+    
     let body = {
-        name: personName.value,
-        main_dish: personMeal.value,
-        side_dish: personSide.value,
+        name: personName,
+        main_dish: personMeal,
+        side_dish: personSide,
         drink_id: personDrink.value,
-        is_togo: personHere,
+        togo: personHere,
         pickup_id: personTime.value
     };
 
@@ -28,35 +32,19 @@ function addOrder(event) {
         .then(res => {
             res.data.forEach(element => {
                 const newItem = document.createElement('div')
-                // newItem.setAttribute('value', element)
+                
                 listItem.appendChild(newItem);
             });
+            getData();
 
-//         // let newItem = listItem.createElement("div");
+
     }).catch(err => console.log(err))
-    getData();
 }
 
 function getData (){
     axios.get(baseURL).then(res => {
         addToView(res.data)}).catch(err => console.log(err));
 }
-
-// function createOrder(order) {
-
-//     axios.post()
-
-//     // const newOrder = document.createElement('p')
-//     // newOrder.setAttribute("id","queue");
-
-//     // newOrder.innerHTML = `<p class="name">${order.name}</p>
-//     // <div class="btns-container">
-//     //     <button onclick="updateOrder(${order.id}, 'plus')">Edit</button>
-//     // </div>
-//     // <button onclick="deleteOrder(${order.id})">delete</button>
-//     // `
-//     // listItem.appendChild(newOrder);
-// }
 
 function addToView(dataObj) {
     listItem.innerHTML = null;
@@ -70,23 +58,49 @@ function addToView(dataObj) {
     } else {
         dataObj.forEach(item => {
             let section = document.createElement('div');
-            let idSection = document.createElement('h5')
-            let nameSection = document.createElement('h4')
-            let mealSection = document.createElement('h5')
-            let sideSection = document.createElement('h5')
-            let drinkSection = document.createElement('h5')
-            let toGoSection = document.createElement('h5')
-            let pickupSection = document.createElement('h5')
+            let idBox = document.createElement('div');
+            let nameBox = document.createElement('div');
+            let mealBox = document.createElement('div');
+            let sideBox = document.createElement('div');
+            let drinkBox = document.createElement('div');
+            let toGoBox = document.createElement('div');
+            let timeBox = document.createElement('div');
 
-            section.classList.add("queueItem")
-            const {order_number, customer_name, main_dish, side_dish, drink, is_togo, pick_up } = item
+            let idSection = document.createElement('h2');
+            let nameSection = document.createElement('h2');
+            let mealSection = document.createElement('h2');
+            let sideSection = document.createElement('h2');
+            let drinkSection = document.createElement('h2');
+            let toGoSection = document.createElement('h2');
+            let pickupSection = document.createElement('h2');
+
+            const {order_number, customer_name, main_dish, side_dish, drink, togo, pick_up } = item
+            
             idSection.textContent = (order_number)
             nameSection.textContent = (customer_name)
             mealSection.textContent = (main_dish)
             sideSection.textContent = (side_dish)
             drinkSection.textContent = (drink)
-            toGoSection.textContent = (is_togo)
+            toGoSection.textContent = (togo)
             pickupSection.textContent = (pick_up)
+            
+            idBox.appendChild(idSection)
+            nameBox.appendChild(nameSection)
+            mealBox.appendChild(mealSection)
+            sideBox.appendChild(sideSection)
+            drinkBox.appendChild(drinkSection)
+            toGoBox.appendChild(toGoSection)
+            timeBox.appendChild(pickupSection)
+            
+            section.classList.add("queueItem")
+
+            idBox.classList.add('idBox')
+            nameBox.classList.add('nameBox')
+            mealBox.classList.add('mealBox')
+            sideBox.classList.add('sideBox')
+            drinkBox.classList.add('drinkBox')
+            toGoBox.classList.add('toGoBox')
+            timeBox.classList.add('timeBox')            
 
             idSection.classList.add('innerQueueItem')
             nameSection.classList.add('innerQueueItem')
@@ -95,21 +109,32 @@ function addToView(dataObj) {
             drinkSection.classList.add('innerQueueItem')
             toGoSection.classList.add('innerQueueItem')
             pickupSection.classList.add('innerQueueItem')
-            // section.appendChild(m);
-            // listItem.appendChild(section)
-            section.appendChild(idSection)
-            section.appendChild(nameSection)
-            section.appendChild(mealSection)
-            section.appendChild(sideSection)
-            section.appendChild(drinkSection)
-            section.appendChild(toGoSection)
-            section.appendChild(pickupSection)
+          
+            section.appendChild(idBox)
+            section.appendChild(nameBox)
+            section.appendChild(mealBox)
+            section.appendChild(sideBox)
+            section.appendChild(drinkBox)
+            section.appendChild(toGoBox)
+            section.appendChild(timeBox)
             
             console.log(item.customer_name)
             console.log(dataObj)
             queue.appendChild(section)
         })
     }
+}
+
+function formatTitle(str) {
+    let split = str.split(' ')
+    let titleArr = split.map(word => {
+        let firstLetter = word.charAt(0).toUpperCase()
+        let remaining = word.slice(1, word.length)
+        word = firstLetter + remaining
+        return word
+    })
+    let title = titleArr.join(' ')
+    return title
 }
 
 getData()
