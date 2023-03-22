@@ -13,7 +13,7 @@ app.post("/orders", addOrder);
 
 app.get("/orders", getOrders);
 
-app.delete("/orders:id", deleteOrder);
+app.delete("/orders/:id", deleteOrder);
 
 app.listen(PORT, () => {
     console.log(`app listening on ${PORT}`)

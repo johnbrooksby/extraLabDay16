@@ -144,8 +144,11 @@ section {
     border: 2px, solid, #A98B67;
     border-radius: 7px;
     justify-content: space-between;
-    /* justify-content: space-between; */
+}
 
+.queueItem:hover {
+    cursor: pointer;
+    scale: 1.01;
 }
 
 .innerQueueItem {

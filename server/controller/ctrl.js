@@ -25,13 +25,15 @@ module.exports = {
 
     deleteOrder: (req, res) => {
         const {id} = req.params;
-        const idx = orders.findIndex(orders => orders.id === +id);
-        if (idx >= 0){
-            orders.splice(idx, 1);
-            res.status(200).send(orders);
-        } else {
-            res.sendStatus(404);
-        }
+
+        // console.log(req.params)
+        sequelize.query(`
+            DELETE
+            FROM orders
+            WHERE id = ${id};
+        `).then (dbRes => {
+            res.status(200).send(dbRes[0])
+        }).catch(err => console.log(err));
     },
 
     getOrders: (req, res) => {

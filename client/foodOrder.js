@@ -109,20 +109,42 @@ function addToView(dataObj) {
             drinkSection.classList.add('innerQueueItem')
             toGoSection.classList.add('innerQueueItem')
             pickupSection.classList.add('innerQueueItem')
-          
+
+            idSection.setAttribute("id", (order_number))
+            nameSection.setAttribute("id", (order_number))
+            mealSection.setAttribute("id", (order_number))
+            sideSection.setAttribute("id", (order_number))
+            drinkSection.setAttribute("id", (order_number))
+            toGoSection.setAttribute("id", (order_number))
+            pickupSection.setAttribute("id", (order_number))
+            
             section.appendChild(idBox)
             section.appendChild(nameBox)
             section.appendChild(mealBox)
             section.appendChild(sideBox)
             section.appendChild(drinkBox)
             section.appendChild(toGoBox)
+            
             section.appendChild(timeBox)
+
+            section.addEventListener('click', deleteItem)
             
             console.log(item.customer_name)
             console.log(dataObj)
+            
+            section.setAttribute("id", (order_number))
             queue.appendChild(section)
         })
     }
+}
+
+function deleteItem(event){
+    let id = event.target.getAttribute('id')
+    // console.log(id)
+    axios.delete('http://localhost:5501/orders/' + id).then(res => {
+        getData();
+        alert(`Order #${id} has been deleted`)
+    }).catch(err => alert("Could not remove the item."))
 }
 
 function formatTitle(str) {
