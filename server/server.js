@@ -21,6 +21,10 @@ app.get('/js', (req, res) => {
     res.sendFile(__dirname + "/../client/foodOrder.js")
 })
 
+app.get('/ico', (req, res) => {
+    res.sendFile(__dirname + "/../client/favicon.ico")
+})
+
 app.post("/orders", addOrder);
 
 app.get("/orders", getOrders);

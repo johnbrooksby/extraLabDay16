@@ -2,7 +2,7 @@
 let form = document.querySelector(".form-layout");
 let listItem = document.getElementById("queue");
 
-const baseURL = `http://localhost:5501/orders`
+const baseURL = `http://13.57.249.61/orders`
 
 function addOrder(event) {
     event.preventDefault();
