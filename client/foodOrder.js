@@ -2,8 +2,6 @@
 let form = document.querySelector(".form-layout");
 let listItem = document.getElementById("queue");
 
-const baseURL = `http://13.57.249.61/orders`
-
 function addOrder(event) {
     event.preventDefault();
     
@@ -28,7 +26,7 @@ function addOrder(event) {
         pickup_id: personTime.value
     };
 
-    axios.post(baseURL, body)
+    axios.post('/orders/', body)
         .then(res => {
             res.data.forEach(element => {
                 const newItem = document.createElement('div')
@@ -42,7 +40,7 @@ function addOrder(event) {
 }
 
 function getData (){
-    axios.get(baseURL).then(res => {
+    axios.get('/orders').then(res => {
         addToView(res.data)}).catch(err => console.log(err));
 }
 
@@ -141,7 +139,7 @@ function addToView(dataObj) {
 function deleteItem(event){
     let id = event.target.getAttribute('id')
     // console.log(id)
-    axios.delete('http://localhost:5501/orders/' + id).then(res => {
+    axios.delete('/orders/' + id).then(res => {
         getData();
         alert(`Order #${id} has been deleted`)
     }).catch(err => alert("Could not remove the item."))

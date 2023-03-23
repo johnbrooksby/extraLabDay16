@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -10,19 +11,19 @@ app.use(cors());
 const {getOrders, deleteOrder, addOrder} = require("./controller/ctrl");
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/../client/foodOrder.html')
+    res.sendFile(path.join(__dirname, '/../client/foodOrder.html'))
 })
 
 app.get('/css', (req, res) => {
-    res.sendFile(__dirname + "/../client/style.css")
+    res.sendFile(path.join(__dirname, '/../client/style.css'))
 })
 
 app.get('/js', (req, res) => {
-    res.sendFile(__dirname + "/../client/foodOrder.js")
+    res.sendFile(path.join(__dirname, '/../client/foodOrder.js'))
 })
 
 app.get('/ico', (req, res) => {
-    res.sendFile(__dirname + "/../client/favicon.ico")
+    res.sendFile(path.join(__dirname, '/../client/favicon.icon'))
 })
 
 app.post("/orders", addOrder);
