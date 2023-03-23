@@ -9,6 +9,18 @@ app.use(cors());
 
 const {getOrders, deleteOrder, addOrder} = require("./controller/ctrl");
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/client/foodOrder.html')
+})
+
+app.get('/css', (req, res) => {
+    res.sendFile(__dirname + "/client/style.css")
+})
+
+app.get('/js', (req, res) => {
+    res.sendFile(__dirname + "/client/foodOrder.js")
+})
+
 app.post("/orders", addOrder);
 
 app.get("/orders", getOrders);
